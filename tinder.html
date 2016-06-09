@@ -14,10 +14,24 @@
   </body>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.0.2/firebase.js"></script>
   <script>
   $(document).ready(function(){
+  var Person = function(name){
+    this.name = name;
+
+  }
+
   var names = ['Hannah', 'Lucy', 'Brenda', 'Lauren', 'Mary'];
-  
+  var nameObjs = [];
+  var person1 = new Person('Hannah');
+
+  for (i=0; i < names.length; i++){
+    names[i] = new Person();
+    nameObjs.push(names[i])
+  }
+  console.log(person1)
+  console.log(nameObjs)
   var liked = [];
   var disliked = [];
 
