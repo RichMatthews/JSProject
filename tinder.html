@@ -6,7 +6,7 @@
 
   </head>
   <body>
-    <p id='demo'> This text will change </p>
+    <p id='namespace'> Namelist </p>
     <button id="display" type="button">Display numbers</button></br>
     <button id="likebutton" type="button">Like</button>
     <button id="dislikebutton" type="button">Dislike</button>
@@ -17,40 +17,35 @@
   <script>
   $(document).ready(function(){
   var names = ['Hannah', 'Lucy', 'Brenda', 'Lauren', 'Mary'];
+  
   var liked = [];
   var disliked = [];
 
-    function likeOrDislike(){
-        var off = true;
-        document.getElementById('likebutton').onclick = function(){
-          var off = false;
-        }
-        document.getElementById('dislikebutton').onclick = function(){
-          var off = true;
-        }
-
-        if(off == false)
-        {
-          liked.push(names[0])
-          names.splice(0, 1)
-        }
-        else if (off == true)
-        {
-          disliked.push(names[0])
-          names.splice(0, 1)
-        }
-      };
 
 
+    function showName(){
+      var name = names[0];
+      if (!name){
+        name = 'Out of people';
+      }
+      document.getElementById('namespace').innerHTML = name;
+    }
+    function like(){
+      liked.push(names[0]);
+      console.log(liked);
+      names.splice(0, 1);
+      showName();
+    }
+    function dislike(){
+      disliked.push(names[0]);
+      names.splice(0, 1);
+      showName();
+    }
 
+    showName();
+    document.getElementById('likebutton').onclick = like;
+    document.getElementById('dislikebutton').onclick = dislike;
 
-   while(names.length > 0){
-      document.getElementById('demo').innerHTML = names[0];
-      likeOrDislike()
-   };
  });
   </script>
-
-
-
 </html>
